@@ -1,7 +1,7 @@
 components:
 - components:
   - components:
-    - name: repeating_panel_1
+    - name: RustTeam_repeating_panle
       properties: {item_template: Frontend.RowTemplate1}
       type: RepeatingPanel
     layout_properties: {grid_position: 'CWHZWW,PHGQIM'}

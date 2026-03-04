@@ -4,7 +4,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-import anvil.sqlite
+import sqlite3
 
 
 # Verbindung zur Datenbank (Die Datei muss in Anvil hochgeladen sein)
@@ -39,4 +39,11 @@ def get_all_players():
   conn = sqlite3.connect(db_path)
   cursor = conn.cursor()
   cursor.execute("SELECT Name, Playtime FROM Player ORDER BY Playtime DESC")
+  return cursor.fetchall()
+
+@anvil.server.callable
+def get_all_teams():
+  conn = sqlite3.connect(data_files["rust_final.db"])
+  cursor = conn.cursor()
+  cursor.execute("SELECT TeamID, Name FROM Team")
   return cursor.fetchall()
