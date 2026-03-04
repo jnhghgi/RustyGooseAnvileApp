@@ -1,14 +1,29 @@
 components:
-- components: []
+- components:
+  - components:
+    - name: repeating_panel_1
+      properties: {item_template: Frontend.RowTemplate1}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'CWHZWW,PHGQIM'}
+    name: RustTeam_DataGrid
+    properties:
+      columns:
+      - {data_key: RustTeam_ID_Column, expand: false, id: JKSDUP, title: ID, width: 200.272705078125}
+      - {data_key: RustTeam_Name_Column, id: VJQQOR, title: Name}
+    type: DataGrid
   layout_properties: {slot: default}
-  name: content_panel
+  name: RustTeam_Panel
   properties: {col_widths: '{}'}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
+- layout_properties: {slot: title}
+  name: label_1
+  properties: {text: Rusty Goose Stats}
+  type: Label
 container:
-  properties: {html: '@theme:standard-page.html'}
+  properties: {html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate
 is_package: true

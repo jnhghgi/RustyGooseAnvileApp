@@ -4,6 +4,8 @@ unique_ids:
     theme.css: 5XPNRBNQ7ZM7W4KJBVPS7W6E564QQNFH
   forms:
     Frontend: MHOQMIP27LXC52HCWBMWYM2S5KQQLGLK
+    Frontend.ItemTemplate1: '177261736819163516994941.444695'
+    Frontend.RowTemplate1: '1772617420959423189142744.5038'
   modules: {}
   scripts: {}
   server_modules:
