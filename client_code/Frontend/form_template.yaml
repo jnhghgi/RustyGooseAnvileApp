@@ -1,8 +1,9 @@
 components:
 - components:
   - components:
-    - name: RustTeam_repeating_panle
-      properties: {item_template: Frontend.RowTemplate1}
+    - layout_properties: {}
+      name: RustTeam_repeating_panle
+      properties: {item_template: Frontend.RowTemplate1, visible: true}
       type: RepeatingPanel
     layout_properties: {grid_position: 'CWHZWW,PHGQIM'}
     name: RustTeam_DataGrid
