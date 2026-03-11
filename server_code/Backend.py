@@ -24,3 +24,10 @@ def get_team_stats():
             GROUP BY Team.Name
         """)
     return cursor.fetchall()
+
+@anvil.server.callable
+def get_Players_OnTeam(TeamID):
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    cursor.execute("SELECT SteamID, Name, Playtime FROM Player Where TeamID = TeamID")
+    return cursor.fetchall()

@@ -1,0 +1,19 @@
+components:
+- layout_properties: {grid_position: 'PBQBHN,UAATAL'}
+  name: RustTeam_Name_Label
+  properties: {align: center}
+  type: Label
+- components:
+  - name: RustPlayer_Repeating_panel
+    properties: {item_template: Frontend.TeamForm.RowTemplate2}
+    type: RepeatingPanel
+  layout_properties: {grid_position: 'ALJBVM,OYVMQE'}
+  name: RustTeam_Members_DataGrid
+  properties:
+    columns:
+    - {data_key: SteamID, id: JKSDUP, title: Steam ID}
+    - {data_key: Name, id: VJQQOR, title: Name}
+    - {data_key: playtime, id: OJLQEN, title: Playtime}
+  type: DataGrid
+container: {type: ColumnPanel}
+is_package: true

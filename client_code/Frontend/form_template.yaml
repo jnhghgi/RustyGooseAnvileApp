@@ -9,8 +9,9 @@ components:
     name: RustTeam_DataGrid
     properties:
       columns:
-      - {data_key: RustTeam_ID_Column, expand: false, id: JKSDUP, title: ID, width: 200.272705078125}
-      - {data_key: RustTeam_Name_Column, id: VJQQOR, title: Name}
+      - {data_key: TeamID, expand: false, id: JKSDUP, title: ID, width: 200.272705078125}
+      - {data_key: Name, id: VJQQOR, title: Name}
+      - {data_key: auswaehl, id: UKFYJW, title: Auswahl}
     type: DataGrid
   layout_properties: {slot: default}
   name: RustTeam_Panel

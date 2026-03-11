@@ -1,5 +1,11 @@
-components: []
+components:
+- event_bindings: {}
+  layout_properties: {column: UKFYJW}
+  name: Auswaehlen
+  properties: {enabled: true, text: Auswaehlen}
+  type: Button
 container:
   data_bindings: []
+  properties: {italic: false}
   type: DataRowPanel
 is_package: true
