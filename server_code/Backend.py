@@ -29,6 +29,41 @@ def get_team_stats():
 def get_Players_OnTeam(TeamID):
   with get_db_connection() as conn:
     cursor = conn.cursor()
-    query = "SELECT SteamID, Name, Playtime FROM Player WHERE TeamID = %s"
+    query = "SELECT SteamID, Name, Playtime FROM Player WHERE TeamID = ?"
     cursor.execute(query, (TeamID,))
     return cursor.fetchall()
+
+
+@anvil.server.callable
+def get_team_experience_stats():
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    query = """
+            SELECT T.Name, SUM(P.Playtime) as TotalHours 
+            FROM Player P
+            JOIN Team T ON P.TeamID = T.TeamID
+            GROUP BY T.Name
+            ORDER BY TotalHours
+        """
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    teams = [f"Team {r[0]}" for r in rows]
+    hours = [r[1] for r in rows]
+    return teams, hours
+
+@anvil.server.callable
+def get_team_tc_counts():
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    query = """
+            SELECT T.Name, COUNT(TC.TcID) as TCCount
+            FROM Team T
+            JOIN Tool_Cupboard TC ON T.TeamID = TC.TeamID
+            GROUP BY T.Name
+            ORDER BY TCCount DESC
+        """
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    team_names = [r[0] for r in rows]
+    tc_counts = [r[1] for r in rows]
+    return team_names, tc_counts

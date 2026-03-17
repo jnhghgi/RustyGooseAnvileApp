@@ -3,18 +3,22 @@ components:
   - components:
     - layout_properties: {}
       name: RustTeam_repeating_panle
-      properties: {item_template: Frontend.RowTemplate1, visible: true}
+      properties:
+        item_template: Frontend.RowTemplate1
+        margin: [null, 51, null, null]
+        visible: true
       type: RepeatingPanel
-    layout_properties: {grid_position: 'CWHZWW,PHGQIM'}
+    layout_properties: {grid_position: 'EAFTTT,XEWMHV'}
     name: RustTeam_DataGrid
     properties:
       columns:
-      - {data_key: TeamID, expand: false, id: JKSDUP, title: ID, width: 200.272705078125}
-      - {data_key: Name, id: VJQQOR, title: Name}
-      - {data_key: auswaehl, id: UKFYJW, title: Auswahl}
+      - {data_key: TeamID, expand: false, id: JKSDUP, title: ID, width: 153.20001220703125}
+      - {data_key: Name, expand: false, id: VJQQOR, title: Name, width: 202.5999755859375}
+      - {data_key: auswaehl, expand: false, id: UKFYJW, title: Auswahl, width: 246.7999267578125}
+      visible: true
     type: DataGrid
   layout_properties: {slot: default}
-  name: RustTeam_Panel
+  name: Main_FlowPanel
   properties: {col_widths: '{}'}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
@@ -25,6 +29,38 @@ components:
   name: label_1
   properties: {text: Rusty Goose Stats}
   type: Label
+- components:
+  - event_bindings: {}
+    layout_properties: {grid_position: 'PHEERT,UGMOZH'}
+    name: PlayerHours_Plot
+    properties: {text: Player Experience}
+    type: Link
+  - event_bindings: {}
+    layout_properties: {grid_position: 'YAHTLT,NAKZHU'}
+    name: TeamOverview_Datagrid
+    properties:
+      spacing:
+        margin: [20, null, null, null]
+      text: Team Overview
+    type: Link
+  - event_bindings: {}
+    layout_properties: {grid_position: 'OFLFQV,UHDEWS'}
+    name: TC_Ranking
+    properties:
+      spacing:
+        margin: ['20', null, null, null]
+      text: TC Ranking
+    type: Link
+  - layout_properties: {grid_position: 'MYFSSS,GVVMXI'}
+    name: link_2
+    properties:
+      spacing:
+        margin: ['20', null, null, null]
+    type: Link
+  layout_properties: {slot: left-nav}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
 container:
   properties: {html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate

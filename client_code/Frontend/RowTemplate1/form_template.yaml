@@ -2,10 +2,14 @@ components:
 - event_bindings: {}
   layout_properties: {column: UKFYJW}
   name: Auswaehlen
-  properties: {enabled: true, text: Auswaehlen}
+  properties: {align: center, enabled: true, text: Auswaehlen}
   type: Button
 container:
   data_bindings: []
-  properties: {italic: false}
+  properties:
+    align: left
+    italic: false
+    margin: [null, 0, null, 0]
+    visible: true
   type: DataRowPanel
 is_package: true
