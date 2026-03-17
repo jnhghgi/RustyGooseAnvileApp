@@ -29,5 +29,6 @@ def get_team_stats():
 def get_Players_OnTeam(TeamID):
   with get_db_connection() as conn:
     cursor = conn.cursor()
-    cursor.execute("SELECT SteamID, Name, Playtime FROM Player Where TeamID = TeamID")
+    query = "SELECT SteamID, Name, Playtime FROM Player WHERE TeamID = %s"
+    cursor.execute(query, (TeamID,))
     return cursor.fetchall()
