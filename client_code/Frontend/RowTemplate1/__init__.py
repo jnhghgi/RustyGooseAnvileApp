@@ -17,5 +17,5 @@ class RowTemplate1(RowTemplate1Template):
   def Auswaehlen_click(self, **event_args):
     """This method is called when the button is clicked"""
     print(self.item)
-    open_form('Frontend.TeamForm',self.item)
+    open_form('Frontend.TeamForm2',self.item)
 

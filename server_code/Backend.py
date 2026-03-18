@@ -1,6 +1,7 @@
 import sqlite3
 import anvil.server
 from anvil.files import data_files
+import re
 
 # Helper function to avoid repeating connection logic
 def get_db_connection():
@@ -107,3 +108,30 @@ def get_player_blueprints(steam_id):
         """
     cursor.execute(query, (steam_id,))
   return cursor.fetchall()
+
+
+@anvil.server.callable
+def get_base_locations():
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+
+    # Join Team -> Tool_Cupboard -> Base
+    query = """
+            SELECT T.Name, B.Coordinates
+            FROM Team T
+            JOIN Tool_Cupboard TC ON T.TeamID = TC.TeamID
+            JOIN Base B ON TC.TcID = B.TcID
+        """
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    map_data = []
+    for team_name, coord_str in rows:
+      
+      numbers = re.findall(r'\d+', coord_str)
+      if len(numbers) >= 2:
+        map_data.append({
+          "team": team_name,
+          "x": int(numbers[0]),
+          "y": int(numbers[1])
+        })
+    return map_data
