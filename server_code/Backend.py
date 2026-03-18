@@ -59,7 +59,7 @@ def get_team_tc_counts():
             SELECT T.Name, COUNT(TC.TcID) as TCCount FROM Team T
             JOIN Tool_Cupboard TC ON T.TeamID = TC.TeamIDGROUP BY T.Name
             ORDER BY TCCount DESC"""
-    cursor.execute(query)
+    cursor.execute(query)<y
     rows = cursor.fetchall()
     team_names = [r[0] for r in rows]
     tc_counts = [r[1] for r in rows]
