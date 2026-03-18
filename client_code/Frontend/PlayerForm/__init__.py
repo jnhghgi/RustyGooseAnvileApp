@@ -16,7 +16,12 @@ class PlayerForm(PlayerFormTemplate):
 
   def Load_Blueprint_DataGrid(self):
     self.Main_content_panel.clear()
-    self.Main_content_panel.add_component()
+    return_value = anvil.server.call("get_player_blueprints", self.row_dict['SteamID'])
+    
+    return_value =  [{"Name":r[0],"TechTier": r[1],"Cost": r[2]} for r in return_value]
+    print(return_value)
+    self.RustPlayerBlueprints_repeating_panel.items = return_value
+    self.Main_content_panel.add_component(self.RustPlayerBlueprints_DataGrid)
     
   def Load_PlayerStats_DataGrid(self):
     self.Main_content_panel.clear()
@@ -32,7 +37,7 @@ class PlayerForm(PlayerFormTemplate):
   @handle("Blueprint_Link", "click")
   def Blueprint_Link_click(self, **event_args):
     """This method is called when the link is clicked"""
-    pass
+    self.Load_Blueprint_DataGrid()
 
   @handle("PlayerStats_Link", "click")
   def PlayerStats_Link_click(self, **event_args):

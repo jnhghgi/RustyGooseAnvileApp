@@ -56,10 +56,12 @@ def get_team_tc_counts():
   with get_db_connection() as conn:
     cursor = conn.cursor()
     query = """
-            SELECT T.Name, COUNT(TC.TcID) as TCCount FROM Team T
-            JOIN Tool_Cupboard TC ON T.TeamID = TC.TeamIDGROUP BY T.Name
+            SELECT T.Name, COUNT(TC.TcID) as TCCount 
+            FROM Team T
+            JOIN Tool_Cupboard TC ON T.TeamID = TC.TeamID 
+            GROUP BY T.Name
             ORDER BY TCCount DESC"""
-    cursor.execute(query)<y
+    cursor.execute(query)
     rows = cursor.fetchall()
     team_names = [r[0] for r in rows]
     tc_counts = [r[1] for r in rows]
@@ -90,3 +92,18 @@ def get_team_name_by_steam_id(steam_id):
     query = "SELECT T.Name, P.Playtime FROM Team T JOIN Player P ON T.TeamID = P.TeamID WHERE P.SteamID = ?"
     cursor.execute(query, (steam_id,))
     return cursor.fetchone()
+
+
+@anvil.server.callable
+def get_player_blueprints(steam_id):
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    query = """
+            SELECT I.Name, B.TechTier, B.Cost
+            FROM learns L
+            JOIN Blueprint B ON L.BpID = B.BpID
+            JOIN Item I ON B.ItemID = I.ItemID
+            WHERE L.SteamID = ?
+        """
+    cursor.execute(query, (steam_id,))
+  return cursor.fetchall()
