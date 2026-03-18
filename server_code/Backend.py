@@ -56,14 +56,37 @@ def get_team_tc_counts():
   with get_db_connection() as conn:
     cursor = conn.cursor()
     query = """
-            SELECT T.Name, COUNT(TC.TcID) as TCCount
-            FROM Team T
-            JOIN Tool_Cupboard TC ON T.TeamID = TC.TeamID
-            GROUP BY T.Name
-            ORDER BY TCCount DESC
-        """
+            SELECT T.Name, COUNT(TC.TcID) as TCCount FROM Team T
+            JOIN Tool_Cupboard TC ON T.TeamID = TC.TeamIDGROUP BY T.Name
+            ORDER BY TCCount DESC"""
     cursor.execute(query)
     rows = cursor.fetchall()
     team_names = [r[0] for r in rows]
     tc_counts = [r[1] for r in rows]
     return team_names, tc_counts
+
+@anvil.server.callable
+def get_all_players():
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    # Fetching SteamID, Name, and Playtime from the Player table 
+    cursor.execute("SELECT SteamID, Name FROM Player")
+    return cursor.fetchall()
+
+
+
+@anvil.server.callable
+def get_all_player_bySteamID(SteamID):
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    # Fetching SteamID, Name, and Playtime from the Player table 
+    cursor.execute("SELECT SteamID, Name FROM Player Where SteamID = ?",(SteamID,))
+    return cursor.fetchall()
+
+@anvil.server.callable
+def get_team_name_by_steam_id(steam_id):
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    query = "SELECT T.Name, P.Playtime FROM Team T JOIN Player P ON T.TeamID = P.TeamID WHERE P.SteamID = ?"
+    cursor.execute(query, (steam_id,))
+    return cursor.fetchone()

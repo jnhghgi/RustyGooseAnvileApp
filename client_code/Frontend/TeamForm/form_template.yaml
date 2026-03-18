@@ -23,11 +23,6 @@ components:
   - name: RustPlayer_Repeating_panel
     properties: {item_template: Frontend.TeamForm.RowTemplate2}
     type: RepeatingPanel
-  - event_bindings: {}
-    layout_properties: {slot: footer}
-    name: RustPlayers_Dashboard
-    properties: {}
-    type: Plot
   layout_properties: {grid_position: 'ALJBVM,OYVMQE'}
   name: RustTeam_Members_DataGrid
   properties:

@@ -2,7 +2,7 @@ components:
 - event_bindings: {}
   layout_properties: {column: UKFYJW}
   name: Auswaehlen
-  properties: {align: center, enabled: true, text: Auswaehlen}
+  properties: {align: center, enabled: true, text: Auswählen}
   type: Button
 container:
   data_bindings: []

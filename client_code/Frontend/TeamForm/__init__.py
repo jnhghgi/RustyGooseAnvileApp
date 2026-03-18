@@ -20,20 +20,3 @@ class TeamForm(TeamFormTemplate):
     """This method is called when the link is clicked"""
     open_form('Frontend')
 
-  @handle("RustPlayers_Dashboard", "click")
-  def RustPlayers_Dashboard_click(self, points, **event_args):
-    """This method is called when a data point is clicked."""
-    def refresh_chart(self):
-      team_names, total_hours = anvil.server.call('get_team_experience_stats')
-      self.plot_1.data = [
-        go.Bar(
-          x=team_names,
-          y=total_hours,
-          marker_color='#2196F3' # Optional: Rust-style blue or orange
-        )
-      ]
-
-      # Add labels
-      self.plot_1.layout.title = "Most Experienced Teams (Total Hours)"
-      self.plot_1.layout.xaxis.title = "Team Name"
-      self.plot_1.layout.yaxis.title = "Combined Playtime (Hours)"

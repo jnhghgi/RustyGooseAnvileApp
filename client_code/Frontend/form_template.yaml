@@ -14,8 +14,20 @@ components:
       columns:
       - {data_key: TeamID, expand: false, id: JKSDUP, title: ID, width: 153.20001220703125}
       - {data_key: Name, expand: false, id: VJQQOR, title: Name, width: 202.5999755859375}
-      - {data_key: auswaehl, expand: false, id: UKFYJW, title: Auswahl, width: 246.7999267578125}
+      - {data_key: auswaehl, expand: false, id: UKFYJW, title: Auswahl, width: '246.7999267578125'}
       visible: true
+    type: DataGrid
+  - components:
+    - name: RustPlayer_repeating_panle
+      properties: {item_template: Frontend.RowTemplate3}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'YMKGON,LXQKOC'}
+    name: RustPlayer_DataGrid
+    properties:
+      columns:
+      - {data_key: SteamID, id: JKSDUP, title: SteamID}
+      - {data_key: Name, id: OJLQEN, title: Name}
+      - {data_key: data_key3, id: VJQQOR, title: Auswahl, width: ''}
     type: DataGrid
   layout_properties: {slot: default}
   name: Main_FlowPanel
@@ -33,7 +45,7 @@ components:
   - event_bindings: {}
     layout_properties: {grid_position: 'PHEERT,UGMOZH'}
     name: PlayerHours_Plot
-    properties: {text: Player Experience}
+    properties: {text: Team Experience}
     type: Link
   - event_bindings: {}
     layout_properties: {grid_position: 'YAHTLT,NAKZHU'}
@@ -51,11 +63,13 @@ components:
         margin: ['20', null, null, null]
       text: TC Ranking
     type: Link
-  - layout_properties: {grid_position: 'MYFSSS,GVVMXI'}
-    name: link_2
+  - event_bindings: {}
+    layout_properties: {grid_position: 'MYFSSS,GVVMXI'}
+    name: PlayerOverview_Form
     properties:
       spacing:
         margin: ['20', null, null, null]
+      text: Player Overview
     type: Link
   layout_properties: {slot: left-nav}
   name: column_panel_1

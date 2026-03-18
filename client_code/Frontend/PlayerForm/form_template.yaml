@@ -1,0 +1,72 @@
+components:
+- components:
+  - components:
+    - name: RustPlayerStast_content_panel
+      properties: {item_template: Frontend.PlayerForm.RowTemplate4}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'ZUZPYA,VJRQNQ'}
+    name: RustPlayerStats_DataGrid
+    properties:
+      columns:
+      - {data_key: SteamID, id: JKSDUP, title: SteamID}
+      - {data_key: Playtime, id: VJQQOR, title: Playtime}
+      - {data_key: Team_Name, id: OJLQEN, title: Team}
+    type: DataGrid
+  layout_properties: {slot: default}
+  name: Main_content_panel
+  properties: {}
+  type: ColumnPanel
+- components:
+  - event_bindings: {}
+    layout_properties: {}
+    name: Back_Link
+    properties: {text: Back}
+    type: Link
+  layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- layout_properties: {slot: title}
+  name: PlayerName_Label
+  properties:
+    spacing:
+      margin: [null, null, null, 247]
+    text: Player Overview
+  type: Label
+- components:
+  - event_bindings: {}
+    layout_properties: {grid_position: 'CZNKBM,TEASHQ'}
+    name: Blueprint_Link
+    properties:
+      spacing:
+        margin: ['10', null, null, null]
+      text: Blueprints
+    type: Link
+  - event_bindings: {}
+    layout_properties: {grid_position: 'HMHZKY,GYZNEW'}
+    name: PlayerStats_Link
+    properties:
+      spacing:
+        margin: ['35', null, null, null]
+      text: Player Stats
+    type: Link
+  - layout_properties: {grid_position: 'YMPKFH,DHVLVN'}
+    name: link_3
+    properties:
+      spacing:
+        margin: ['35', null, null, null]
+    type: Link
+  - layout_properties: {grid_position: 'DBZESS,EZPTYJ'}
+    name: link_4
+    properties:
+      spacing:
+        margin: ['35', null, null, null]
+    type: Link
+  layout_properties: {slot: left-nav}
+  name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

@@ -10,7 +10,7 @@ from anvil.tables import app_tables
 class Frontend(FrontendTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-    self.Main_FlowPanel.clear()
+    self.Load_TeamOverview_Datagrid()
 
   def Load_TeamOverview_Datagrid(self):
     self.Main_FlowPanel.clear()
@@ -29,20 +29,12 @@ class Frontend(FrontendTemplate):
     plot.layout.yaxis.title = "Total Playtime(Hours)"
     self.Main_FlowPanel.add_component(plot)
 
-    import plotly.graph_objects as go
-
   def Load_TC_Ownership_Dashboard(self):
     self.Main_FlowPanel.clear()
     names, counts = anvil.server.call('get_team_tc_counts')
     plot = anvil.Plot()
     plot.data = [
-      go.Bar(
-        x=names,
-        y=counts,
-        marker_color='#4CAF50',
-        text=counts,           
-        textposition='auto'
-      )
+      go.Bar(x=names,y=counts,marker_color='#4CAF50',text=counts,textposition='auto')
     ]
     plot.layout.title = "Tool Cupboard Distribution by Team"
     plot.layout.xaxis.title = "Team Name"
@@ -50,6 +42,14 @@ class Frontend(FrontendTemplate):
     plot.layout.yaxis.dtick = 1
     self.Main_FlowPanel.add_component(plot)
 
+  def Load_Player_DataGrid(self):
+    self.Main_FlowPanel.clear()
+    return_value = anvil.server.call('get_all_players')
+    return_value = [{"SteamID" : r[0], "Name": r[1]} for r in return_value]
+    self.RustPlayer_repeating_panle.items = return_value
+    self.Main_FlowPanel.add_component(self.RustPlayer_DataGrid)
+    
+  
   @handle("PlayerHours_Plot", "click")
   def PlayerHours_Plot_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -64,6 +64,11 @@ class Frontend(FrontendTemplate):
   def TC_Ranking_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.Load_TC_Ownership_Dashboard()
+
+  @handle("PlayerOverview_Form", "click")
+  def PlayerOverview_Form_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    self.Load_Player_DataGrid()
 
   
 
