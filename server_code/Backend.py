@@ -114,8 +114,6 @@ def get_player_blueprints(steam_id):
 def get_base_locations():
   with get_db_connection() as conn:
     cursor = conn.cursor()
-
-    # Join Team -> Tool_Cupboard -> Base
     query = """
             SELECT T.Name, B.Coordinates
             FROM Team T
@@ -126,7 +124,7 @@ def get_base_locations():
     rows = cursor.fetchall()
     map_data = []
     for team_name, coord_str in rows:
-      
+      #Regex
       numbers = re.findall(r'\d+', coord_str)
       if len(numbers) >= 2:
         map_data.append({
@@ -135,3 +133,21 @@ def get_base_locations():
           "y": int(numbers[1])
         })
     return map_data
+
+@anvil.server.callable
+def get_team_inventory(team_id):
+  with get_db_connection() as conn:
+    cursor = conn.cursor()
+    query = """
+            SELECT I.Name, SUM(S.amount) as TotalAmount
+            FROM Tool_Cupboard TC
+            JOIN Base B ON TC.TcID = B.TcID
+            JOIN Stores S ON B.BaseID = S.BaseID
+            JOIN Item I ON S.ItemID = I.ItemID
+            WHERE TC.TeamID = ?
+            GROUP BY I.Name
+            ORDER BY TotalAmount DESC
+        """
+
+    cursor.execute(query, (team_id,))
+    return cursor.fetchall()

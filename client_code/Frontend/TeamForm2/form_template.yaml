@@ -2,15 +2,26 @@ components:
 - components:
   - components:
     - name: RustPlayer_Repeating_panel
-      properties: {item_template: Frontend.TeamForm.RowTemplate2}
+      properties: {item_template: Frontend.TeamForm2.RowTemplate2}
       type: RepeatingPanel
-    layout_properties: {grid_position: 'HQOFAQ,IYAPOT'}
+    layout_properties: {grid_position: 'OUPFRK,VHRQXE'}
     name: RustTeam_Members_DataGrid
     properties:
       columns:
-      - {data_key: SteamID, id: JKSDUP, title: Steam ID}
+      - {data_key: SteamID, id: JKSDUP, title: SteamID}
       - {data_key: Name, id: VJQQOR, title: Name}
       - {data_key: Playtime, id: OJLQEN, title: Playtime}
+    type: DataGrid
+  - components:
+    - name: RustItem_repeating_panel
+      properties: {item_template: Frontend.TeamForm2.RowTemplate6}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'ZXKLIG,GINMSS'}
+    name: RustItem_DataGrid
+    properties:
+      columns:
+      - {data_key: Name, id: JKSDUP, title: Item Name}
+      - {data_key: Amount, id: VJQQOR, title: Amount}
     type: DataGrid
   layout_properties: {slot: default}
   name: Main_content_panel
@@ -36,24 +47,28 @@ components:
   type: Label
 - components:
   - event_bindings: {}
+    layout_properties: {grid_position: 'NNZTZU,QPODQG'}
+    name: TeamMembers_Link
+    properties:
+      spacing:
+        margin: ['0', null, null, null]
+      text: Team Members
+    type: Link
+  - event_bindings: {}
     layout_properties: {grid_position: 'CAKXNE,DGNWPQ'}
     name: TeamItems
     properties:
       spacing:
-        margin: [0, null, null, null]
+        margin: ['15', null, null, null]
       text: Items
     type: Link
-  - layout_properties: {grid_position: 'VTJBAY,CHRZQK'}
-    name: link_2
+  - event_bindings: {}
+    layout_properties: {grid_position: 'VTJBAY,CHRZQK'}
+    name: Bases_Link
     properties:
       spacing:
         margin: ['15', null, null, null]
-    type: Link
-  - layout_properties: {grid_position: 'TGONDO,RBLRQQ'}
-    name: link_3
-    properties:
-      spacing:
-        margin: ['15', null, null, null]
+      text: Bases
     type: Link
   - layout_properties: {grid_position: 'KVHCHU,CPQLEZ'}
     name: link_4

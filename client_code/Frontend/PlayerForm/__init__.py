@@ -12,14 +12,13 @@ class PlayerForm(PlayerFormTemplate):
     self.init_components(**properties)
     self.PlayerName_Label.text = rowDict["Name"]
     self.Main_content_panel.clear()
+    self.Load_PlayerStats_DataGrid()
     # Any code you write here will run before the form opens.
 
   def Load_Blueprint_DataGrid(self):
     self.Main_content_panel.clear()
     return_value = anvil.server.call("get_player_blueprints", self.row_dict['SteamID'])
-    
     return_value =  [{"Name":r[0],"TechTier": r[1],"Cost": r[2]} for r in return_value]
-    print(return_value)
     self.RustPlayerBlueprints_repeating_panel.items = return_value
     self.Main_content_panel.add_component(self.RustPlayerBlueprints_DataGrid)
     

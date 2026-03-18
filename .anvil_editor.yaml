@@ -11,9 +11,9 @@ unique_ids:
     Frontend.PlayerForm.RowTemplate5: '1773840159150918048491510.228'
     Frontend.RowTemplate1: '1772617420959423189142744.5038'
     Frontend.RowTemplate3: '1773825280347441076025771.084'
-    Frontend.TeamForm: '1773221411493166719695286.7177'
-    Frontend.TeamForm.RowTemplate2: '1773221482829624536235781.9739'
     Frontend.TeamForm2: '1773844261663891169438515.7883'
+    Frontend.TeamForm2.RowTemplate2: '1773848809528343499026262.04877'
+    Frontend.TeamForm2.RowTemplate6: '1773847465451771904960997.9303'
   modules: {}
   scripts: {}
   server_modules:
