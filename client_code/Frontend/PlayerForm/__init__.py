@@ -15,7 +15,7 @@ class PlayerForm(PlayerFormTemplate):
     self.Load_PlayerStats_DataGrid()
     # Any code you write here will run before the form opens.
 
-  def Load_Blueprint_DataGrid(self):
+  def Load_Blueprint_DataGrid(self): 
     self.Main_content_panel.clear()
     return_value = anvil.server.call("get_player_blueprints", self.row_dict['SteamID'])
     return_value =  [{"Name":r[0],"TechTier": r[1],"Cost": r[2]} for r in return_value]
