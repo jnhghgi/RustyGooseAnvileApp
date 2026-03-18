@@ -45,7 +45,7 @@ components:
   - event_bindings: {}
     layout_properties: {grid_position: 'PHEERT,UGMOZH'}
     name: PlayerHours_Plot
-    properties: {text: Team Experience}
+    properties: {text: Player Experience}
     type: Link
   - event_bindings: {}
     layout_properties: {grid_position: 'YAHTLT,NAKZHU'}

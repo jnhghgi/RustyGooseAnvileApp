@@ -29,7 +29,7 @@ components:
     columns:
     - {data_key: SteamID, id: JKSDUP, title: Steam ID}
     - {data_key: Name, id: VJQQOR, title: Name}
-    - {data_key: playtime, id: OJLQEN, title: Playtime}
+    - {data_key: Playtime, id: OJLQEN, title: Playtime}
   type: DataGrid
 container: {type: ColumnPanel}
 is_package: true

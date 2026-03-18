@@ -17,12 +17,12 @@ components:
       properties: {item_template: Frontend.PlayerForm.RowTemplate5}
       type: RepeatingPanel
     layout_properties: {grid_position: 'RSGAKL,LGIXBY'}
-    name: data_grid_1
+    name: RustPlayerBlueprints_DataGrid
     properties:
       columns:
       - {data_key: Name, id: JKSDUP, title: Name}
       - {data_key: TechTier, id: VJQQOR, title: Tech Tier}
-      - {data_key: Co, id: OJLQEN, title: Scrap Cost}
+      - {data_key: Cost, id: OJLQEN, title: Scrap Cost}
     type: DataGrid
   layout_properties: {slot: default}
   name: Main_content_panel
